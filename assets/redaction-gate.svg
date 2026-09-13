@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="290" viewBox="0 0 860 290" role="img" aria-label="The SIH26171 redaction gate: a live page feeds on-device ONNX perception and PII detection, then a one-way gate drops sensitive findings and forwards a single redacted artefact per step to the planner API.">
+  <title>SIH26171 — the redaction gate, one artefact per step</title>
+
+  <style>
+    .win    { fill: #0d1117; stroke: #30363d; stroke-width: 1; }
+    .chrome { fill: #161b22; }
+    .mono   { font-family: 'SFMono-Regular', ui-monospace, 'DejaVu Sans Mono', Consolas, monospace; }
+    .ttl    { fill: #7d8590; font-size: 12px; }
+    .box    { fill: #161b22; stroke: #30363d; stroke-width: 1.2; rx: 8; }
+    .boxlbl { fill: #c9d1d9; font-size: 12px; text-anchor: middle; }
+    .boxsub { fill: #6e7681; font-size: 10px; text-anchor: middle; }
+    .edge   { stroke: #30363d; stroke-width: 1.6; fill: none; }
+    .edgelbl{ fill: #6e7681; font-size: 10px; text-anchor: middle; }
+    .local  { fill: none; stroke: #238636; stroke-width: 1.2; stroke-dasharray: 5 4; rx: 12; }
+    .locallbl { fill: #3fb950; font-size: 10px; }
+    .netlbl { fill: #58a6ff; font-size: 10px; }
+    .droplbl{ fill: #f85149; font-size: 10px; text-anchor: middle; }
+
+    @media (prefers-reduced-motion: reduce) { .pkt { display: none; } }
+  </style>
+
+  <defs>
+    <marker id="ar" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+      <path d="M0 0 L7 3.5 L0 7 z" fill="#484f58"/>
+    </marker>
+    <!-- Motion paths for the travelling packets. -->
+    <path id="p1" d="M136 118 H196"/>
+    <path id="p2" d="M326 118 H386"/>
+    <path id="p3" d="M516 118 H586"/>
+    <path id="p4" d="M451 152 V208"/>
+  </defs>
+
+  <rect class="win" x=".5" y=".5" width="859" height="289" rx="10"/>
+  <path class="chrome" d="M.5 10.5a10 10 0 0 1 10-10h839a10 10 0 0 1 10 10V40H.5z"/>
+  <line x1="0" y1="40" x2="860" y2="40" stroke="#30363d" stroke-width="1"/>
+  <circle cx="22" cy="20" r="5" fill="#ff5f57"/>
+  <circle cx="40" cy="20" r="5" fill="#febc2e"/>
+  <circle cx="58" cy="20" r="5" fill="#28c840"/>
+  <text class="mono ttl" x="80" y="25">SIH26171 — exactly one artefact crosses the network per step</text>
+
+  <!-- on-device boundary -->
+  <rect class="local" x="16" y="66" width="516" height="104"/>
+  <text class="mono locallbl" x="26" y="61">◤ on the user's machine — nothing here leaves</text>
+
+  <!-- nodes -->
+  <rect class="box" x="26" y="92" width="110" height="52"/>
+  <text class="mono boxlbl" x="81" y="115">live page</text>
+  <text class="mono boxsub" x="81" y="130">DOM + pixels</text>
+
+  <rect class="box" x="196" y="92" width="130" height="52"/>
+  <text class="mono boxlbl" x="261" y="112">perception</text>
+  <text class="mono boxsub" x="261" y="126">ONNX · OCR · NER</text>
+  <text class="mono boxsub" x="261" y="138">face-yunet</text>
+
+  <rect class="box" x="386" y="92" width="130" height="52" stroke="#ea580c" fill="#2d1206"/>
+  <text class="mono boxlbl" x="451" y="112" fill="#fb923c">redaction gate</text>
+  <text class="mono boxsub" x="451" y="126" fill="#c2703f">L0 structural</text>
+  <text class="mono boxsub" x="451" y="138" fill="#c2703f">L1 lexical</text>
+
+  <rect class="box" x="586" y="92" width="130" height="52" stroke="#1f6feb" fill="#0c1d3d"/>
+  <text class="mono boxlbl" x="651" y="112" fill="#79c0ff">planner API</text>
+  <text class="mono boxsub" x="651" y="128" fill="#4b82c9">POST /v1/step</text>
+
+  <rect class="box" x="386" y="208" width="130" height="44" stroke="#8b2c25" fill="#2d0f0d"/>
+  <text class="mono droplbl" x="451" y="228">dropped · logged</text>
+  <text class="mono boxsub" x="451" y="242" fill="#a34b44">manifest: what &amp; why</text>
+
+  <!-- edges -->
+  <path class="edge" d="M136 118 H190" marker-end="url(#ar)"/>
+  <path class="edge" d="M326 118 H380" marker-end="url(#ar)"/>
+  <path class="edge" d="M516 118 H580" marker-end="url(#ar)"/>
+  <path class="edge" d="M451 144 V202" marker-end="url(#ar)" stroke="#8b2c25"/>
+  <path class="edge" d="M651 144 V172 H81 V150" marker-end="url(#ar)" stroke-dasharray="4 4"/>
+
+  <text class="mono edgelbl" x="551" y="110">1 artefact</text>
+  <text class="mono netlbl"  x="600" y="80">▲ the only network call</text>
+  <text class="mono edgelbl" x="370" y="188">✕ never sent</text>
+  <text class="mono edgelbl" x="360" y="168">next action</text>
+
+  <!-- travelling packets: green while local, blue once past the gate, red into the drop -->
+  <circle class="pkt" r="3.5" fill="#3fb950">
+    <animateMotion dur="3.2s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear">
+      <mpath href="#p1"/>
+    </animateMotion>
+  </circle>
+  <circle class="pkt" r="3.5" fill="#3fb950">
+    <animateMotion dur="3.2s" begin="0.8s" repeatCount="indefinite">
+      <mpath href="#p2"/>
+    </animateMotion>
+  </circle>
+  <circle class="pkt" r="3.5" fill="#58a6ff">
+    <animateMotion dur="3.2s" begin="1.6s" repeatCount="indefinite">
+      <mpath href="#p3"/>
+    </animateMotion>
+  </circle>
+  <circle class="pkt" r="3" fill="#f85149">
+    <animateMotion dur="3.2s" begin="1.6s" repeatCount="indefinite">
+      <mpath href="#p4"/>
+    </animateMotion>
+  </circle>
+
+  <!-- the gate pulses as each packet passes -->
+  <rect x="386" y="92" width="130" height="52" rx="8" fill="none" stroke="#ea580c" stroke-width="2" opacity="0">
+    <animate attributeName="opacity" values="0;0.85;0" dur="3.2s" begin="1.2s" repeatCount="indefinite"/>
+  </rect>
+</svg>
