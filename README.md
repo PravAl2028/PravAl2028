@@ -63,7 +63,7 @@ An agent whose failure modes are recovery tiers rather than crashes.
 
 **Currently sharpening** — distributed systems, evaluation methodology, Rust beyond the FFI boundary.
 
-Reach me &rarr; [open an issue on this repo](https://github.com/PravAl2028/Praval-Anachi/issues/new?title=Hello%20Praval&body=Hi%20Praval%2C%0A%0A)
+Reach me &rarr; [open an issue on this repo](https://github.com/PravAl2028/PravAl2028/issues/new?title=Hello%20Praval&body=Hi%20Praval%2C%0A%0A)
 
 </details>
 
@@ -350,8 +350,8 @@ flowchart LR
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/PravAl2028/Praval-Anachi/output/snake-dark.svg">
-  <img src="https://raw.githubusercontent.com/PravAl2028/Praval-Anachi/output/snake.svg" alt="Contribution graph snake animation">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/PravAl2028/PravAl2028/output/snake-dark.svg">
+  <img src="https://raw.githubusercontent.com/PravAl2028/PravAl2028/output/snake.svg" alt="Contribution graph snake animation">
 </picture>
 
 </div>
@@ -363,7 +363,7 @@ flowchart LR
 <div align="center">
 
 <a href="https://github.com/PravAl2028"><img src="https://img.shields.io/badge/GitHub-PravAl2028-0d1117?style=for-the-badge&logo=github&logoColor=58a6ff" alt="GitHub"></a>
-<a href="https://github.com/PravAl2028/Praval-Anachi/issues/new?title=Hello%20Praval&body=Hi%20Praval%2C%0A%0A"><img src="https://img.shields.io/badge/Say_hello-open_an_issue-1f6feb?style=for-the-badge&logo=githubactions&logoColor=white" alt="Open an issue to say hello"></a>
+<a href="https://github.com/PravAl2028/PravAl2028/issues/new?title=Hello%20Praval&body=Hi%20Praval%2C%0A%0A"><img src="https://img.shields.io/badge/Say_hello-open_an_issue-1f6feb?style=for-the-badge&logo=githubactions&logoColor=white" alt="Open an issue to say hello"></a>
 
 <br><br>
 
