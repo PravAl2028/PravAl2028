@@ -1,0 +1,86 @@
+name: metrics
+
+# Builds rich SVG panels (language breakdown, habits, activity calendar) and commits
+# them into this repo under metrics/. The README then references them by relative path.
+#
+# WHY SELF-HOSTED: the popular live-badge services are unreliable. At the time this was
+# set up, github-readme-stats.vercel.app returned 503 and the hosted activity-graph
+# returned 402 Payment Required. Images generated here are committed to your own repo,
+# so they cannot break when somebody else's Vercel quota runs out.
+#
+# ONE-TIME SETUP (optional but recommended): create a classic PAT with the `public_repo`
+# scope and save it as a repository secret named METRICS_TOKEN. Without it the run still
+# works, but the richer plugins are skipped or rate-limited.
+
+on:
+  schedule:
+    - cron: "33 3 * * *" # 03:33 UTC daily
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/metrics.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: metrics
+  cancel-in-progress: false
+
+jobs:
+  # One panel per (kind, theme) pair, so the README can serve a light and a dark
+  # variant through <picture> and match the reader's GitHub theme.
+  panels:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 1 # they all commit to the same branch; serialise to avoid conflicts
+      matrix:
+        include:
+          - kind: overview
+            theme: light
+            suffix: ""
+          - kind: overview
+            theme: dark
+            suffix: "-dark"
+          - kind: habits
+            theme: light
+            suffix: ""
+          - kind: habits
+            theme: dark
+            suffix: "-dark"
+
+    steps:
+      - name: overview panel
+        if: matrix.kind == 'overview'
+        uses: lowlighter/metrics@latest
+        with:
+          token: ${{ secrets.METRICS_TOKEN || secrets.GITHUB_TOKEN }}
+          user: PravAl2028
+          filename: metrics/overview${{ matrix.suffix }}.svg
+          template: classic
+          base: header, activity, community, repositories, metadata
+          config_timezone: Asia/Kolkata
+          config_theme: ${{ matrix.theme }}
+          plugin_lines: yes
+          plugin_languages: yes
+          plugin_languages_details: percentage
+          plugin_languages_limit: 8
+
+      - name: habits and calendar panel
+        if: matrix.kind == 'habits'
+        uses: lowlighter/metrics@latest
+        with:
+          token: ${{ secrets.METRICS_TOKEN || secrets.GITHUB_TOKEN }}
+          user: PravAl2028
+          filename: metrics/habits${{ matrix.suffix }}.svg
+          base: ""
+          config_timezone: Asia/Kolkata
+          config_theme: ${{ matrix.theme }}
+          plugin_habits: yes
+          plugin_habits_from: 200
+          plugin_habits_days: 14
+          plugin_habits_facts: yes
+          plugin_habits_charts: yes
+          plugin_isocalendar: yes
+          plugin_isocalendar_duration: full-year
