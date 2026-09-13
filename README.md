@@ -7,7 +7,6 @@
 [![GitHub](https://img.shields.io/badge/GitHub-0d1117?style=for-the-badge&logo=github&logoColor=2EE6D6)](https://github.com/PravAl2028)
 [![LeetCode](https://img.shields.io/badge/LeetCode-0d1117?style=for-the-badge&logo=leetcode&logoColor=2EE6D6)](https://leetcode.com/u/Praval_Anachi)
 [![Say hello](https://img.shields.io/badge/Say_hello-0d1117?style=for-the-badge&logo=githubactions&logoColor=2EE6D6)](https://github.com/PravAl2028/PravAl2028/issues/new?title=Hello%20Praval&body=Hi%20Praval%2C%0A%0A)
-![Views](https://komarev.com/ghpvc/?username=PravAl2028&style=for-the-badge&color=0d1117&label=PROFILE+VIEWS)
 
 <br>
 
@@ -15,6 +14,13 @@
 ![Tests](https://img.shields.io/badge/tests_authored-902-3fb950?style=flat-square&labelColor=0d1117)
 ![Repos](https://img.shields.io/badge/repositories-14-58a6ff?style=flat-square&labelColor=0d1117)
 ![Stack](https://img.shields.io/badge/TypeScript_%2B_Python_%2B_Rust-f85149?style=flat-square&labelColor=0d1117)
+<!--
+  komarev hardcodes #555 for the label half and ignores labelColor/logo entirely, so this
+  badge can't be made to match the ones above it. The eye glyph is the only icon it accepts,
+  and #1f6feb is chosen because komarev forces white counter text — white on the 2EE6D6
+  accent fails contrast. Delete this line if you'd rather have a perfectly uniform row.
+-->
+![Views](https://komarev.com/ghpvc/?username=PravAl2028&style=flat-square&color=1f6feb&label=%F0%9F%91%81+views)
 
 </div>
 
